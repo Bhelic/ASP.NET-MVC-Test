@@ -11,7 +11,7 @@ using ASP.NET_MVC_Test.Models;
 
 namespace ASP.NET_MVC_Test.Controllers
 {
-    public class tblProductsController : Controller
+    public class tblProductsController : BaseController
     {
         private TestDBEntities db = new TestDBEntities();
 
@@ -55,15 +55,29 @@ namespace ASP.NET_MVC_Test.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ProdId,ProdNombre,CatId,Precio,ProdObservacion")] tblProduct tblProduct)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.tblProduct.Add(tblProduct);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.tblProduct.Add(tblProduct);
+                    await db.SaveChangesAsync();
+
+                    Success(string.Format("<b>{0}</b> fue exitosamente agregado.", tblProduct.ProdNombre), true);
+
+                    //TempData["UserMessage"] = new { CssClassName = "alert-sucess", Title = "Success!", Message = "Operation Done." };
+
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.CatId = new SelectList(db.tblProductCategory, "CatId", "CatNombre", tblProduct.CatId);
+                return View(tblProduct);
+
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
-            ViewBag.CatId = new SelectList(db.tblProductCategory, "CatId", "CatNombre", tblProduct.CatId);
-            return View(tblProduct);
         }
 
         // GET: tblProducts/Edit/5
@@ -122,6 +136,9 @@ namespace ASP.NET_MVC_Test.Controllers
             tblProduct tblProduct = await db.tblProduct.FindAsync(id);
             db.tblProduct.Remove(tblProduct);
             await db.SaveChangesAsync();
+
+            Danger(string.Format("<b>{0}</b> fue eliminado permanentemente.", tblProduct.ProdNombre), true);
+
             return RedirectToAction("Index");
         }
 
