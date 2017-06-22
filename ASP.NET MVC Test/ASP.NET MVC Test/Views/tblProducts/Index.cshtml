@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ASP.NET_MVC_Test.Models.tblProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr class="success">
+            <th>Nombre
+                @*@Html.DisplayNameFor(model => model.ProdNombre)*@
+            </th>
+            <th>Precio
+                @*@Html.DisplayNameFor(model => model.Precio)*@
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ProdObservacion)
+            </th>*@
+            <th>Categoría
+                @*@Html.DisplayNameFor(model => model.tblProductCategory.CatNombre)*@
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ProdObservacion)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblProductCategory.CatNombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdId }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ProdId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ProdId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

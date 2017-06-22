@@ -1,0 +1,56 @@
+﻿@model ASP.NET_MVC_Test.Models.tblProduct
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea eliminar?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nombre
+            @*@Html.DisplayNameFor(model => model.ProdNombre)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdNombre)
+        </dd>
+
+        <dt>Precio
+            @*@Html.DisplayNameFor(model => model.Precio)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>Categoría
+            @*@Html.DisplayNameFor(model => model.tblProductCategory.CatNombre)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProductCategory.CatNombre)
+        </dd>
+
+        <dt>
+            Observación
+            @*@Html.DisplayNameFor(model => model.ProdObservacion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdObservacion)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@model ASP.NET_MVC_Test.Models.tblProduct
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nombre
+            @*@Html.DisplayNameFor(model => model.ProdNombre)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdNombre)
+        </dd>
+
+        <dt>Precio
+            @*@Html.DisplayNameFor(model => model.Precio)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>Categoría
+            @*@Html.DisplayNameFor(model => model.tblProductCategory.CatNombre)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProductCategory.CatNombre)
+        </dd>
+
+        <dt>Observación
+            @*@Html.DisplayNameFor(model => model.ProdObservacion)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdObservacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProdId }) |
+    @Html.ActionLink("Cancelar", "Index")
+</p>
