@@ -64,9 +64,7 @@ namespace ASP.NET_MVC_Test.Controllers
 
                     Success(string.Format("<b>{0}</b> fue exitosamente agregado.", tblProduct.ProdNombre), true);
 
-                    //TempData["UserMessage"] = new { CssClassName = "alert-sucess", Title = "Success!", Message = "Operation Done." };
-
-                    return RedirectToAction("Index");
+                   return RedirectToAction("Index");
                 }
 
                 ViewBag.CatId = new SelectList(db.tblProductCategory, "CatId", "CatNombre", tblProduct.CatId);
@@ -120,11 +118,12 @@ namespace ASP.NET_MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblProduct tblProduct = await db.tblProduct.FindAsync(id);
+            tblProduct tblProduct = await db.tblProduct.FindAsync(id);            
             if (tblProduct == null)
             {
                 return HttpNotFound();
             }
+
             return View(tblProduct);
         }
 
@@ -137,7 +136,7 @@ namespace ASP.NET_MVC_Test.Controllers
             db.tblProduct.Remove(tblProduct);
             await db.SaveChangesAsync();
 
-            Danger(string.Format("<b>{0}</b> fue eliminado permanentemente.", tblProduct.ProdNombre), true);
+            Information(string.Format("El Producto <b>{0}</b> fue eliminado.", tblProduct.ProdNombre), true);
 
             return RedirectToAction("Index");
         }

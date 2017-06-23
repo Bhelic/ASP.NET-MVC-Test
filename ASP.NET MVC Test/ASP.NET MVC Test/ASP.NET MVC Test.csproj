@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -133,11 +134,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\tblProductCategoriesController.cs" />
     <Compile Include="Controllers\tblProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Helpers\Alert.cs" />
+    <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>TestDB.tt</DependentUpon>
     </Compile>
@@ -170,7 +172,6 @@
       <DependentUpon>TestDB.edmx</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\tblProducts\Create.cshtml" />
     <Content Include="Views\tblProducts\Delete.cshtml" />
     <Content Include="Views\tblProducts\Details.cshtml" />
@@ -178,6 +179,11 @@
     <Content Include="Views\tblProducts\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\tblProductCategories\Create.cshtml" />
+    <Content Include="Views\tblProductCategories\Delete.cshtml" />
+    <Content Include="Views\tblProductCategories\Details.cshtml" />
+    <Content Include="Views\tblProductCategories\Edit.cshtml" />
+    <Content Include="Views\tblProductCategories\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
